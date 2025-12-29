@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import Card from './components/Card'
 import ColorChanger from './components/ColorChanger'
 
@@ -8,10 +10,16 @@ function App() {
 
   return (
     <>
-      <div className="card flex flex-col m-4 ">
+    <div className='flex justify-center flex-col text-center shadow-2xl ' >
+      
+      <div className=" flex justify-center  m-4 rounded-xl p-4 bg-gray-100">
        <Card imageUrl={imageUrl} name={name}/>
       </div>
-     
+      <div>
+        <ColorChanger />
+      </div>
+    
+    </div>
     </>
   )
 }

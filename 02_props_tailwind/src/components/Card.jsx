@@ -3,7 +3,7 @@ export default function Card({imageUrl, name}) {
 
   return(
     <>
-      <div className="relative h-100 w-80 rounded-xl overflow-x-hidden ">
+      <div className="relative h-100 w-80 rounded-xl overflow-x-hidden shadow-2xl ">
         <img 
         src={imageUrl} alt=""
         className="z-0 h-full w-full rounded-md object-cover" 
