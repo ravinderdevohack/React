@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/03_password_generator/',
   plugins: [
     react(),
     tailwindcss() 
