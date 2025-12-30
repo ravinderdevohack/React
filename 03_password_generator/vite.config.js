@@ -9,4 +9,6 @@ export default defineConfig({
     react(),
     tailwindcss() 
   ],
+
+  base: '/React/03_password_generator',
 })
