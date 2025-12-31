@@ -40,10 +40,15 @@ jobs:
         working-directory: 04_currency_converter
         run: npm run build
 
+      - name: Prepare Pages folder
+        run: |
+          mkdir -p pages/04_currency_converter
+          cp -r 04_currency_converter/dist/* pages/04_currency_converter/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 04_currency_converter/dist
+          path: pages
 
   deploy:
     needs: build
