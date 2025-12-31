@@ -5,8 +5,8 @@ export default function App() {
 
   return (
     <div className="">
-      {/* <PasswordGenerator /> */}
-      <Test />
+      <PasswordGenerator />
+      {/* <Test /> */}
 
     </div>
   )
