@@ -1,0 +1,58 @@
+name: Deploy All React Apps (Vite)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # ---- Password Generator ----
+      - name: Build Password Generator
+        working-directory: 03_password_generator
+        run: |
+          npm ci
+          npm run build
+          mkdir -p ../pages/03_password_generator
+          cp -r dist/* ../pages/03_password_generator/
+
+      # ---- Currency Converter ----
+      - name: Build Currency Converter
+        working-directory: 04_currency_converter
+        run: |
+          npm ci
+          npm run build
+          mkdir -p ../pages/04_currency_converter
+          cp -r dist/* ../pages/04_currency_converter/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+
+    steps:
+      - uses: actions/deploy-pages@v4
