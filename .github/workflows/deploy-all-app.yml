@@ -44,18 +44,18 @@ jobs:
           cp -r dist/* ../pages/04_currency_converter/
 
       # ---- React Router ----
-      - name: Build React Router
-        working-directory: 05-react-router
-        run: |
-          npm ci
-          npm run build
-          mkdir -p ../pages/05-react-router
-          cp -r dist/* ../pages/05-react-router/
+      # - name: Build React Router
+      #   working-directory: 05-react-router
+      #   run: |
+      #     npm ci
+      #     npm run build
+      #     mkdir -p ../pages/05-react-router
+      #     cp -r dist/* ../pages/05-react-router/
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: pages
+      # - name: Upload Pages artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: pages
 
   deploy:
     needs: build
